@@ -1,0 +1,19 @@
+id: calendar
+json:
+  header:
+    left: 'prev,next today'
+    center: 'title'
+    right: 'month,agendaWeek,agendaDay'
+  events:
+    -
+      title: 'Example 1'
+      start: '2017-10-02'
+      end: '2017-10-05'
+      allDay: true
+    -
+      title: 'Example 2'
+      start: '2017-10-12 07:00'
+      end: '2017-10-12 09:00'
+      allDay: false
+  _eventClick: my_calendar_click
+  _eventClick_about: 'Use this if you want to call function my_calendar_click(event) within the calendar.'
