@@ -1,6 +1,6 @@
 id: calendar
 _google_calendar: 'https://calendar.google.com/_GOOGLE_CALENDAR_URL_/basic.ics'
-_google_calendar_: 'Use this to render data from private adress. The url will not be visible on the page.'
+_google_calendar_: 'Use this to render data from private adress. The url will not be visible on the page. It will overide json/events.'
 json:
   header:
     left: 'prev,next today'
