@@ -48,8 +48,6 @@ class PluginFullcalendarVersion_351{
       }
       $data->set('data/json/events', $events);
     }
-    
-    
     /**
      * Json.
      */

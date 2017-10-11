@@ -19,3 +19,4 @@ json:
       allDay: false
   _eventClick: my_calendar_click
   _eventClick_about: 'Use this if you want to call function my_calendar_click(calEvent, jsEvent, view) within the calendar.'
+  defaultView: agendaWeek
