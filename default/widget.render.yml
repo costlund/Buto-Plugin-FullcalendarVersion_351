@@ -1,9 +1,11 @@
 id: calendar
+_google_calendar: 'https://calendar.google.com/_GOOGLE_CALENDAR_URL_/basic.ics'
+_google_calendar_: 'Use this to render data from private adress. The url will not be visible on the page.'
 json:
   header:
     left: 'prev,next today'
     center: 'title'
-    right: 'month,agendaWeek,agendaDay'
+    right: 'month,agendaWeek,agendaDay,list'
   events:
     -
       title: 'Example 1'
@@ -16,4 +18,4 @@ json:
       end: '2017-10-12 09:00'
       allDay: false
   _eventClick: my_calendar_click
-  _eventClick_about: 'Use this if you want to call function my_calendar_click(event) within the calendar.'
+  _eventClick_about: 'Use this if you want to call function my_calendar_click(calEvent, jsEvent, view) within the calendar.'

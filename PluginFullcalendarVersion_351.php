@@ -23,8 +23,33 @@ class PluginFullcalendarVersion_351{
    * Include on page.
    */
   public static function widget_render($data){
+    /**
+     * 
+     */
     wfPlugin::includeonce('wf/array');
     $data = new PluginWfArray($data);
+    /**
+     * Data from Google Calendar url.
+     */
+    if($data->get('data/google_calendar')){
+      wfPlugin::includeonce('google/calendar');
+      $google = new PluginGoogleCalendar();
+      $google->filename = $data->get('data/google_calendar');
+      $google->init();
+      $calendar = new PluginWfArray($google->calendar);
+      $events = array();
+      foreach ($calendar->get('event') as $key => $value) {
+        $item = new PluginWfArray($value);
+        if($item->get('DTSTART;VALUE=DATE')){
+          $events[] = array('title' => $item->get('SUMMARY'), 'start' => substr($item->get('DTSTART;VALUE=DATE'), 0, 8), 'end' => substr($item->get('DTEND;VALUE=DATE'), 0, 8), 'allDay' => true);
+        }elseif($item->get('DTSTART')){
+          $events[] = array('title' => $item->get('SUMMARY'), 'start' => substr($item->get('DTSTART'), 0, 16), 'end' => substr($item->get('DTEND'), 0, 16), 'allDay' => false);
+        }
+      }
+      $data->set('data/json/events', $events);
+    }
+    
+    
     /**
      * Json.
      */
