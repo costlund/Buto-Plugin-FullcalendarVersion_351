@@ -32,21 +32,23 @@ class PluginFullcalendarVersion_351{
      * Data from Google Calendar url.
      */
     if($data->get('data/google_calendar')){
-      wfPlugin::includeonce('google/calendar');
-      $google = new PluginGoogleCalendar();
-      $google->filename = $data->get('data/google_calendar');
-      $google->init();
-      $calendar = new PluginWfArray($google->calendar);
+      $calendar = PluginFullcalendarVersion_351::getGoogleCalendar($data->get('data/google_calendar'));
+      
+      /**
+       * Create events.
+       */
       $events = array();
       foreach ($calendar->get('event') as $key => $value) {
         $item = new PluginWfArray($value);
         if($item->get('DTSTART;VALUE=DATE')){
           $events[] = array('title' => $item->get('SUMMARY'), 'start' => substr($item->get('DTSTART;VALUE=DATE'), 0, 8), 'end' => substr($item->get('DTEND;VALUE=DATE'), 0, 8), 'allDay' => true);
         }elseif($item->get('DTSTART')){
-          $events[] = array('title' => $item->get('SUMMARY'), 'start' => substr($item->get('DTSTART'), 0, 16), 'end' => substr($item->get('DTEND'), 0, 16), 'allDay' => false);
+          $events[] = array('title' => $item->get('SUMMARY'), 'start' => date('Y-m-d H:i:s', strtotime(substr($item->get('DTSTART'), 0, 16))), 'end' => date('Y-m-d H:i:s', strtotime(substr($item->get('DTEND'), 0, 16))), 'allDay' => false);
         }
       }
       $data->set('data/json/events', $events);
+      
+      
     }
     /**
      * Json.
@@ -66,5 +68,15 @@ class PluginFullcalendarVersion_351{
     $element[] = wfDocument::createHtmlElement('div', null, array('id' => $data->get('data/id')));
     $element[] = wfDocument::createHtmlElement('script', '$(document).ready(function(){$("#'.$data->get('data/id').'").fullCalendar('.$json.');});', array('type' => 'text/javascript'));
     wfDocument::renderElement($element);
+  }
+  /**
+   * 
+   */
+  private static function getGoogleCalendar($google_calendar){
+    wfPlugin::includeonce('google/calendar');
+    $google = new PluginGoogleCalendar();
+    $google->filename = $google_calendar;
+    $google->init();
+    return new PluginWfArray($google->calendar);
   }
 }
