@@ -9,10 +9,7 @@ class PluginFullcalendarVersion_351{
    */
   public static function widget_include($data){
     wfPlugin::includeonce('wf/array');
-    
-    
-    $language = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/i18n/language'));
-    
+    $language = wfI18n::getLanguage();
     $data = new PluginWfArray($data);
     $element = array();
     $element[] = wfDocument::createHtmlElement('link', null, array('href' => '/plugin/fullcalendar/version_351/fullcalendar.css', 'rel' => 'stylesheet'));
@@ -21,8 +18,11 @@ class PluginFullcalendarVersion_351{
     $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/fullcalendar.js', 'type' => 'text/javascript'));
     if($data->get('data/lang')){
       $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/locale/'.$data->get('data/lang').'.js', 'type' => 'text/javascript'));
-    }elseif($language->get()){
-      $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/locale/'.$language->get().'.js', 'type' => 'text/javascript'));
+    }elseif($language){
+      if($language == 'en'){
+        $language = 'en-gb';
+      }
+      $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/locale/'.$language.'.js', 'type' => 'text/javascript'));
     }
     wfDocument::renderElement($element);
   }
