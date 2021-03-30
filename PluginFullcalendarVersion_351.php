@@ -86,4 +86,10 @@ class PluginFullcalendarVersion_351{
     $google->init();
     return new PluginWfArray($google->calendar);
   }
+  public function page_json(){
+    wfPlugin::includeonce('wf/yml');
+    $json = new PluginWfYml(__DIR__.'/default/json.yml');
+    $json = json_encode($json->get());
+    exit($json);
+  }
 }

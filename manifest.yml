@@ -1,5 +1,9 @@
-version: 1.0.0
+version: 1.1.0
 history:
+  1.1.0:
+    date: '2021-03-30'
+    title: 'Page json'
+    description: 'Add page_json as an example of json data.'
   1.0.0:
     date: '2021-03-30'
     title: 'First version.'
