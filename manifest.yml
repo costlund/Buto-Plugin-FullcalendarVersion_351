@@ -1,5 +1,9 @@
-version: 1.1.0
+version: 1.1.1
 history:
+  1.1.1:
+    date: '2022-02-09'
+    title: 'HTML escape'
+    description: 'Omited all replacements.'
   1.1.0:
     date: '2021-03-30'
     title: 'Page json'

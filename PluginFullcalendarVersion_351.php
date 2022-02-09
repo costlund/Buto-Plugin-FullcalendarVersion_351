@@ -15,7 +15,7 @@ class PluginFullcalendarVersion_351{
     $element[] = wfDocument::createHtmlElement('link', null, array('href' => '/plugin/fullcalendar/version_351/fullcalendar.css', 'rel' => 'stylesheet'));
     //$element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/lib/jquery.min.js', 'type' => 'text/javascript'));
     $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/lib/moment.min.js', 'type' => 'text/javascript'));
-    $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/fullcalendar.js', 'type' => 'text/javascript'));
+    $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/fullcalendar.js?i=1', 'type' => 'text/javascript'));
     if($data->get('data/lang')){
       $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/fullcalendar/version_351/locale/'.$data->get('data/lang').'.js', 'type' => 'text/javascript'));
     }elseif($language){
