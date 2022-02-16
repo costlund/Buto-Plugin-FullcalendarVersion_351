@@ -1,5 +1,9 @@
-version: 1.1.1
+version: 1.1.2
 history:
+  1.1.2:
+    date: '2022-02-16'
+    title: 'Readme'
+    description: 'Improvements.'
   1.1.1:
     date: '2022-02-09'
     title: 'HTML escape'
