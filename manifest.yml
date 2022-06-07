@@ -1,9 +1,17 @@
-version: 1.1.1
+version: 1.1.3
 history:
-  1.1.1:
+  1.1.3:
     date: '2022-06-07'
     title: Versions
     description: 'Versions update.'
+  1.1.2:
+    date: '2022-02-16'
+    title: 'Readme'
+    description: 'Improvements.'
+  1.1.1:
+    date: '2022-02-09'
+    title: 'HTML escape'
+    description: 'Omited all replacements.'
   1.1.0:
     date: '2021-03-30'
     title: 'Page json'
