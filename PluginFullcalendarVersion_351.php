@@ -48,9 +48,9 @@ class PluginFullcalendarVersion_351{
       foreach ($calendar->get('event') as $key => $value) {
         $item = new PluginWfArray($value);
         if($item->get('DTSTART;VALUE=DATE')){
-          $events[] = array('title' => $item->get('SUMMARY'), 'start' => substr($item->get('DTSTART;VALUE=DATE'), 0, 8), 'end' => substr($item->get('DTEND;VALUE=DATE'), 0, 8), 'allDay' => true);
+          $events[] = array('title' => $item->get('SUMMARY'), 'start' => wfPhpfunc::substr($item->get('DTSTART;VALUE=DATE'), 0, 8), 'end' => wfPhpfunc::substr($item->get('DTEND;VALUE=DATE'), 0, 8), 'allDay' => true);
         }elseif($item->get('DTSTART')){
-          $events[] = array('title' => $item->get('SUMMARY'), 'start' => date('Y-m-d H:i:s', strtotime(substr($item->get('DTSTART'), 0, 16))), 'end' => date('Y-m-d H:i:s', strtotime(substr($item->get('DTEND'), 0, 16))), 'allDay' => false);
+          $events[] = array('title' => $item->get('SUMMARY'), 'start' => date('Y-m-d H:i:s', strtotime(wfPhpfunc::substr($item->get('DTSTART'), 0, 16))), 'end' => date('Y-m-d H:i:s', strtotime(wfPhpfunc::substr($item->get('DTEND'), 0, 16))), 'allDay' => false);
         }
       }
       $data->set('data/json/events', $events);
@@ -66,7 +66,7 @@ class PluginFullcalendarVersion_351{
      */
     if($data->get('data/json/eventClick')){
       $eventClick = $data->get('data/json/eventClick').'(calEvent, jsEvent, view)';
-      $json = str_replace('"eventClick":"'.$data->get('data/json/eventClick').'"', '"eventClick":function(calEvent, jsEvent, view){'.$eventClick.';}', $json);
+      $json = wfPhpfunc::str_replace('"eventClick":"'.$data->get('data/json/eventClick').'"', '"eventClick":function(calEvent, jsEvent, view){'.$eventClick.';}', $json);
     }
     /**
      * Element.
