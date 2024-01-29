@@ -73,7 +73,16 @@ class PluginFullcalendarVersion_351{
      */
     $element = array();
     $element[] = wfDocument::createHtmlElement('div', null, array('id' => $data->get('data/id')));
-    $element[] = wfDocument::createHtmlElement('script', '$(document).ready(function(){$("#'.$data->get('data/id').'").fullCalendar('.$json.');});', array('type' => 'text/javascript'));
+    /**
+     * script
+     */
+    $script = file_get_contents(__DIR__.'/js/script.js');
+    $script = str_replace("'_data_id_'", $data->get('data/id'), $script);
+    $script = str_replace("'_json_'", $json, $script);
+    $element[] = wfDocument::createHtmlElement('script', $script, array('type' => 'text/javascript'));
+    /**
+     * 
+     */
     wfDocument::renderElement($element);
   }
   /**

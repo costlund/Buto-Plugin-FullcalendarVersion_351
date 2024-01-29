@@ -1,5 +1,9 @@
-version: 1.2.1
+version: 1.3.0
 history:
+  1.3.0:
+    date: '2024-01-29'
+    title: Bootstrap 5
+    description: 'Changes according to Bootstrap 5. Add script to js file and than using replacements. Add Reload button to script.'
   1.2.1:
     date: '2023-09-11'
     title: Versions
